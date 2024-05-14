@@ -1,4 +1,4 @@
-#### Motor Kóði
+Motor Kóði🕜
 ---------------
 from machine import Pin, PWM
 import time
@@ -35,7 +35,7 @@ if __name__ == "__main__":
         move_backward()
 ---------------
 
-#### speaker kóði.
+speaker kóði.🔈
 ---------------
 from dfplayer import DFPlayer
 import time
@@ -74,9 +74,9 @@ if __name__ == "__main__":
     play_audio(file_number, folder_number, volume)
 
 ----------------
-#### Hauskúpan
+Hauskúpan💀
 ---------------
-#### ledperur
+ledperur🚨
 ---------------
 from machine import Pin
 import time
