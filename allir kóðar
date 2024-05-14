@@ -75,6 +75,56 @@ if __name__ == "__main__":
 
 ----------------
 Hauskúpan💀
+
+----------------
+from machine import Pin
+import time
+
+LED_PIN = 16  # GPIO10 for LED
+SERVO_PIN = 9  # GPIO9 for servo
+
+# Initialize LED pin as output
+led = Pin(LED_PIN, Pin.OUT)
+led.value(1)  # Turn on the LED
+
+# Function to control the servo motor
+def control_servo():
+    from myservo import myServo
+    
+    servo = myServo(SERVO_PIN)  # Pin the servo is connected to
+
+    def sweep(servo, start, end, step, delay):
+        for angle in range(start, end, step):
+            servo.myServoWriteAngle(angle)
+            time.sleep(delay)
+
+    try:
+        while True:
+            # Sweep the servo motor from 70째 to 30째
+            sweep(servo, 100, 29, -1, 0.005)  # Decreased delay
+
+            # Sweep the servo motor from 30째 to 70째
+            sweep(servo, 130, 71, 1, 0.005)  # Decreased delay
+
+    except KeyboardInterrupt:
+        pass
+
+    # Detach all connections
+    servo.myServoDetach()
+
+# Main program
+try:
+    # Control the servo motor
+    control_servo()
+
+    # Keep the LED on until the program is interrupted
+    while True:
+        time.sleep(1)  # Sleep to reduce CPU usage
+
+except KeyboardInterrupt:
+    # Turn off the LED when the program is interrupted
+    led.value(0)
+
 ---------------
 ledperur🚨
 ---------------
