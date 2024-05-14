@@ -5,3 +5,4 @@ sem vour að vinna verkefnið voru
 #### KNÚTUR
 #### KRISTÓFER
 #### INGÞÓR
+verkefnið átti að fá raflost 
