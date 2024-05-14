@@ -5,4 +5,4 @@ sem vour að vinna verkefnið voru
 #### KNÚTUR
 #### KRISTÓFER
 #### INGÞÓR
-verkefnið átti að fá raflost 
+Hugmyndin fyrir verkefninu var að skelitonið okkar mundi fá raflost og fara i shock
