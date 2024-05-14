@@ -1,0 +1,76 @@
+Motor Kóði
+from machine import Pin, PWM
+import time
+
+# Define motor control pins
+motor_pin1 = Pin(12, Pin.OUT)  # Motor pin 1
+motor_pin2 = Pin(13, Pin.OUT)  # Motor pin 2
+
+# Create PWM object to control motor speed
+motor_pwm = PWM(Pin(14))  # PWM pin for motor speed control
+
+# Set PWM frequency (in Hz)
+motor_pwm.freq(1000)  # Adjust as needed based on your motor specifications
+
+# Function to move the motor forward
+def move_forward():
+    motor_pin1.value(1)
+    motor_pin2.value(0)
+    motor_pwm.duty(512)  # Adjust duty cycle to control motor speed
+    time.sleep(1)  # Adjust duration based on your requirements
+
+# Function to move the motor backward
+def move_backward():
+    motor_pin1.value(0)
+    motor_pin2.value(1)
+    motor_pwm.duty(512)  # Adjust duty cycle to control motor speed
+    time.sleep(1)  # Adjust duration based on your requirements
+
+# Main program
+if __name__ == "__main__":
+    # Loop to move the motor back and forth four times
+    for _ in range(4):
+        move_forward()
+        move_backward()
+-------------------------------------
+
+speaker kóði.
+-------
+from dfplayer import DFPlayer
+import time
+
+def play_audio(file_number, folder_number=1, volume=25):
+    """
+    Spila hljóðskrá með DFPlayer snertimódu.
+    
+    Args:
+        file_number (int): Númer hljóðskrárinnar sem á að spila.
+        folder_number (int): Númer möppunnar sem inniheldur hljóðskrána.
+        volume (int): Hljóðstyrkur (0-30).
+    """
+    try:
+        # Frumstilla DFPlayer með stillingum UART
+        df = DFPlayer(uart_id=1, tx_pin_id=4, rx_pin_id=5)
+
+        # Bíða í smá tíma þangað til DFPlayer er tilbúinn
+        time.sleep(1)
+
+        # Auka hljóðstyrk um 50%
+        aukinn_hljodstyrkur = min(30, volume + int(0.5 * volume))  # Tryggja að hljóðstyrkurinn sé ekki meiri en 30
+        df.volume(aukinn_hljodstyrkur)
+        time.sleep(0.2)
+
+        # Spila skrá
+        df.play(folder_number, file_number)
+    except Exception as e:
+        print("Villa kom upp:", e)
+
+# Dæmi um notkun
+if __name__ == "__main__":
+    file_number = 001  # Dæmi um númer hljóðskráar
+    folder_number = 01  # Dæmi um númer möppu
+    volume = 100  # Dæmi um hljóðstyrk
+    play_audio(file_number, folder_number, volume)
+
+----------------
+Hauskúpan
