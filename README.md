@@ -6,3 +6,4 @@ sem vour að vinna verkefnið voru
 #### KRISTÓFER
 #### INGÞÓR
 Hugmyndin fyrir verkefninu var að skelitonið okkar mundi fá raflost og fara i shock
+###### s
